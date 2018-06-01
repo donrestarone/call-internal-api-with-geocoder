@@ -1,5 +1,6 @@
 require 'httparty'
 require 'geocoder'
+
 Geocoder.configure(use_https: true, api_key: ENV["GOOGLE_KEY"])
 puts 'start address'
 start_addr = STDIN.gets.chomp
@@ -16,8 +17,10 @@ e = "Bad Response"
 url = "http://taxi-fare-api.herokuapp.com/price/show.json?sl=#{start_lat}&slon=#{start_lon}&&el=#{end_lat}&&elon=#{end_lon}"
 body = JSON.parse(HTTParty.get(url).body)
 if body 
-	p 'acquired response from Scoopfare'
+	p '++acquired response from Scoopfare++'
 end
+puts
+puts
 
 uber_prices = []
 lyft_prices = []
